@@ -24,27 +24,36 @@ int main() {
 
     char d = '!' + '$';
     printf("%c\n", d);
+    printf("%d\n", d);
 
-    int p = 'a' + 'A';
+    int p = '%' + '!';
     printf("%d\n", p);
+    printf("%c\n", p);
+
+    char ab = 'a';
+    int ad = ab + 10;
+    printf("ad int is %d\n", ad);
+    printf("ad c is %c\n", ad);
 
     // int g = 'a' + 'B';
     // printf("%d\n", g);
 
     char ss[10] = "acc", aa[10] = "bbxxyy";
     fun(ss, aa);
-    printf("%s,%s\n", ss, aa);
+    printf("ss is: %s, aa is: %s\n", ss, aa);
 
     _Bool h = NULL;
     printf("%d\n", h);
 
+
     char cc[] = "abc";
     printf("%s\n", cc);
+    // printf("%d\n", cc);
 
     double pi = 3.1415926;
     float f = 0.123456789f;
-    printf("pi = %f, f = %4f\n", pi, f);
-    printf("pi = %d, f = %c\n", pi, f);
+    printf("pi = %f, f = %3f\n", pi, f);
+    // printf("pi = %d, f = %c\n", pi, f);
 
     return 0;
 }
