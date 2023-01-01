@@ -12,6 +12,8 @@ int main()
 
     int sz = sizeof(a) / sizeof(a[0]);
 
+    printf("%d \n", sz);
+
     shellsort(a, sz);
     printi(&a, sz);
     return 0;
