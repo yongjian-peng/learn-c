@@ -95,3 +95,20 @@ double pop(void) {
         printf("error: stack empty\n");
         return 0.0;
 }
+
+#include <ctype.h>
+int getch(void);
+void ungetch(int);
+
+int getop(char s[])
+{
+    int i, c, d;
+    while((s[0] = c = getch()) == ' ' || c == '\t')
+        ;
+    s[1] = '\0';
+    if (!isdigit(c) && c != '.')
+    {
+        d = getch();
+        if (d == ' ' || d == '\t' || d == '\n')
+    }
+}

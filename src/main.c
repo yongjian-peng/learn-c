@@ -28,7 +28,7 @@ int main()
 			getch();
 			n--;
 		}
-	}
+	
 	for (n = 0; n < SIZE; n++)
 		printf("%d ", array[n]);
 	// int n, array[SIZE] = {0}, getint(int *);
@@ -38,8 +38,7 @@ int main()
 }
 
 #include <ctype.h>
-																										   int
-																										   getch(void);
+int getch(void);
 void ungetch(int);
 
 int getint(int *pn)
