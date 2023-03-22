@@ -80,10 +80,13 @@ int getfloat(float *pn)
 }
 
 int getch() {
+    printf("getch bufp %d\n", bufp);
     return (bufp > 0) ? buffer[--bufp] : getchar();
 }
 
 void ungetch(int c) {
+    printf("ungetch bufp %d\n", bufp);
+    printf("ungetch buffer %d\n", buffer);
     if (bufp >= BUFSIZE) 
         printf("oversized...\n");
     else  

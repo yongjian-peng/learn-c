@@ -1,16 +1,20 @@
 #include <stdio.h>
 
-int fahr2celsius(int degree) {
-    return 5 * (degree - 32) / 9;
+int fahr2celsius(int degree)
+{
+  return 5 * (degree - 32) / 9;
 }
 
-int printFahrList(int start, int end, int step, int withHead) {
-  if (start <= end && step < 0 || start >= end && step > 0 || step == 0) {
-      printf("params error!\n");
-      return -1;
+int printFahrList(int start, int end, int step, int withHead)
+{
+  if (start <= end && step < 0 || start >= end && step > 0 || step == 0)
+  {
+    printf("params error!\n");
+    return -1;
   }
-  if (withHead) {
-      printf("fahr\tcelsius\n");
+  if (withHead)
+  {
+    printf("fahr\tcelsius\n");
   }
   int i = start;
   while (start <= end ? i <= end : i >= end)
@@ -22,6 +26,7 @@ int printFahrList(int start, int end, int step, int withHead) {
   return 0;
 }
 
-int main() {
-    printFahrList(0, 50, 20, 1);
+int main()
+{
+  printFahrList(0, 50, 20, 1);
 }
