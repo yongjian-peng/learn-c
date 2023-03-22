@@ -10,8 +10,10 @@ int strlen2(char *s) {
 }
 
 int main() {
-    char str[] = "abcdef";
-    char *le = str;
+    // char str[] = "abcdef";
+    // char *le = str;、
+    // char amessage[] = "new is the time"; // 定义一个数组
+    char *le = "now is the time"; // 定义一个指针
     int st;
     st = strlen2(le);
     printf("%d ", st);
