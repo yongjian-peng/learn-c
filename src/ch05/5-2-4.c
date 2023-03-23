@@ -38,14 +38,14 @@ int strcmp1(char *s, char *t){
 int strcmp2(char *s, char *t)
 {
     for (; *s == *t; s++, t++)
-        if (*s == '\0')
-            return 0;
+        if (*s == '\0' || *t == '\0')
+            break;
     return *s - *t;
 }
 
 int main() {
-    char s[] = "thisist";
-    char t[] = "thisisydff";
+    char s[] = "abcdef";
+    char t[] = "ABCDEFG";
 
     strcpy2(s, t);
     printf("%s", s);
