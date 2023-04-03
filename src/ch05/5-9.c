@@ -1,4 +1,10 @@
 #include <stdio.h>
+/**
+ * @brief  使用指针的方式代替数组下标方式改写函数 day_of_year 和 month_day 
+ * @note   
+ * @param  for?\n": 
+ * @retval 
+ */
 #define PPP printf("what does it for?\n");
 
 int* daytab[2];
