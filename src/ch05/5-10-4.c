@@ -15,9 +15,9 @@ void push(int c);
 
 int main(int argc, char *argv[]) {
 
-    while(--argc >= 0) {
-        printf("agrc:%d, argv[agrc-1]%s\n", argc, argv[argc]);
-    }
+    // while(--argc >= 0) {
+    //     printf("agrc:%d, argv[agrc-1]%s\n", argc, argv[argc]);
+    // }
 
     int c, op2, type, number, i;
 
@@ -26,45 +26,45 @@ int main(int argc, char *argv[]) {
     // printf("(multiple), '/', and inter number~\n");
     // printf("------------\n");
 
-    // while (--argc > 0) {
-    //     printf("agrc:%d\n", argc);
-    //     c = (*++argv)[0];
-    //     printf("%c\n", c);
-    //     if (c >= '0' && c <= '9') {
-    //         for (i = 0; c >= '0' && c <= '9'; i++)
-    //             c = *(*argv + i);
-    //         if (c == '\0'){
-    //             number = atoi(*argv);
-    //             c = NUMBER;
-    //         }
-    //     }
-    //     switch (c)
-    //     {
-    //     case NUMBER:
-    //         push(number);
-    //         break;
-    //     case '+':
-    //         push(pop() + pop());
-    //         break;
-    //     case '-':
-    //         op2 = pop();
-    //         push(pop() - op2);
-    //         break;
-    //     case '`':
-    //         push(pop() * pop());
-    //         break;
-    //     case '/':
-    //         if (0 == (op2 = pop())){
-    //             printf("Error: '0' cannot be divided.\n");
-    //             return 0;
-    //         }
-    //         push(pop() / op2);
-    //         break;
-    //     default:
-    //         break;
-    //     }
-    // }
-    // printf("Answer is: %d\n", pop());
+    while (--argc > 0) {
+        printf("agrc:%d\n", argc);
+        c = (*++argv)[0];
+        printf("%c\n", c);
+        if (c >= '0' && c <= '9') {
+            for (i = 0; c >= '0' && c <= '9'; i++)
+                c = *(*argv + i);
+            if (c == '\0'){
+                number = atoi(*argv);
+                c = NUMBER;
+            }
+        }
+        switch (c)
+        {
+        case NUMBER:
+            push(number);
+            break;
+        case '+':
+            push(pop() + pop());
+            break;
+        case '-':
+            op2 = pop();
+            push(pop() - op2);
+            break;
+        case '`':
+            push(pop() * pop());
+            break;
+        case '/':
+            if (0 == (op2 = pop())){
+                printf("Error: '0' cannot be divided.\n");
+                return 0;
+            }
+            push(pop() / op2);
+            break;
+        default:
+            break;
+        }
+    }
+    printf("Answer is: %d\n", pop());
     return 1;
 }
 

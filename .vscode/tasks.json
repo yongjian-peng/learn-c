@@ -43,6 +43,18 @@
                 "isDefault": true
             },
             "detail": "调试器生成的任务。"
+        },
+        {
+            "label": "Input Program Name",
+            "type": "shell",
+            "command": "read -p 'Enter program name: ' program; echo $program > ${workspaceFolder}/src/ch05/program.txt",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "silent"
+            }
         }
     ],
     "version": "2.0.0"
