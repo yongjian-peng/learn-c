@@ -1,17 +1,31 @@
+<<<<<<< HEAD
 /*
     5-1 如果符号+或者-的后面紧跟的不是数字，getint函数将把符号视为0的有效表达方式。
     修改该函数，将这种形式的+或者-符号重新写回到输入的流中
     输入 123 a 12 -23 d +a +23 -32
 */
+=======
+>>>>>>> 1c50bc146abc21a4c7c5400a2ec7c02272879f98
 #include <stdio.h>
 
 #define SIZE 3
 #define BUFSIZE 1000
 char buf[BUFSIZE];
 int bufp = 0;
+<<<<<<< HEAD
 
 void ungetch(int c)
 {
+=======
+/*
+    5-1 如果符号+或者-的后面紧跟的不是数字，getint函数将把符号视为0的有效表达方式。
+    修改该函数，将这种形式的+或者-符号重新写回到输入的流中
+    输入 123 a 12 -23 d +a +23 -32
+*/
+void ungetch(int c)
+{
+    printf("bufp %d\n", bufp);
+>>>>>>> 1c50bc146abc21a4c7c5400a2ec7c02272879f98
 	if (bufp >= BUFSIZE)
 		printf("ungetch: too many characters\n");
 	else
@@ -20,6 +34,10 @@ void ungetch(int c)
 
 int getch(void)
 {
+<<<<<<< HEAD
+=======
+    printf("getch bufp: %d\n", bufp);
+>>>>>>> 1c50bc146abc21a4c7c5400a2ec7c02272879f98
 	return (bufp > 0) ? buf[--bufp] : getchar();
 }
 
