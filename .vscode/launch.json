@@ -6,7 +6,7 @@
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
-            "args": [],
+            "args": ["2","3","4","+","*"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": []
@@ -16,7 +16,8 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
-            "args": [],
+            // "args": ["-f","E:/project/learn-c/src/myprog.c","-o","E:/project/learn-c/src/myprog.txt"],
+            "args": ["-2","+5"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
