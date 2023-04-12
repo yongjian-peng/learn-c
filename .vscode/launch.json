@@ -17,7 +17,7 @@
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
             // "args": ["-f","E:/project/learn-c/src/myprog.c","-o","E:/project/learn-c/src/myprog.txt"],
-            "args": ["-2","+5"],
+            "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
