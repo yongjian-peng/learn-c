@@ -6,6 +6,16 @@
         "*.tcc": "c",
         "string": "c",
         "string_view": "c",
-        "cstdlib": "c"
-    }
+        "cstdlib": "c",
+        "system_error": "c",
+        "fcntl.h": "c"
+    },
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "e:\\project\\learn-c\\output",
+            "binaryPath": "e:\\project\\learn-c\\output\\main.exe",
+            "binaryArgs": []
+        }
+    ],
+    "C_Cpp.errorSquiggles": "disabled"
 }

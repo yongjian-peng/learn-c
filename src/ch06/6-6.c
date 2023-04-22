@@ -25,7 +25,7 @@ struct nlist {
     struct nlist *next; /* 链表中的下一项 */
     char *name; /* 定义的名字 */
     char *defn; /* 替换文本 */
-}
+};
 
 int getch(void);
 void ungetch(int c);
@@ -61,9 +61,9 @@ int main() {
         else if (word[0] == '\n')
             putchar('\n');
         else if ((p = lookup(word)) != NULL)
-            printf("%s ", p->defn);
+            printf("%s", p->defn);
         else    
-            printf("%s ", word);
+            printf("%s", word);
     return 0;
 }
 
@@ -86,5 +86,129 @@ int getword(char *word, int lim, int skip_space) {
     if (skip_space)
         while(isspace(c))
             c = getch();
+    if (c != EOF)
+        *w++ = c;
+    if (!(isalpha(c) || c == '_' || c == '\"' || (c == '/' && (next = getch()) == '*') || c == '#')) {
+        *w = '\0';
+        if (next)
+            ungetch(next);
+        return c;
+    }
+
+    switch (c)
+    {
+        case '\"': /* 字符串常量 */
+            while((*w++ = c = getch()) != '\"')
+                if (c == '\\')
+                    *w++ = getch();
+            break;
+        case '/': /* 注释 */
+            *w++ = next;
+            *w++ = c = getch();
+            while ((*w++ = next = getch()) != '/' || c != '*')
+                c = next;
+            break;
+        case '#': /* 预处理器控制命令 */
+            while (isalpha(*w++ = c = getch()))
+                ;
+            ungetch(c);
+            --w;
+            break;
+        default:
+            for (; --lim > 0; w++)
+                if (!isalnum(*w = getch()) && *w != '_') {
+                    ungetch(*w);
+                    break;
+                }
+            break;
+    }
+
+    *w = '\0';
+    return word[0];
 }
 
+/* get_definition: 将#define 替换文本读入到definition并返回其长度 */
+int get_definition(char definition[], int lim) {
+    int c, i = 0;
+
+    while(isspace(c = getch()))
+        ;
+    ungetch(c);
+    while(--lim > 0 && (c = getch()) != EOF && c != '\n')
+        definition[i++] = c;
+    if (c == '\n')
+        definition[i++] = c;
+    definition[i] = '\0';
+    return i;
+}
+
+/* hash 为字符串s生成哈希值 */
+unsigned hash(char *s) {
+    unsigned hashval;
+    for(hashval = 0; *s != '\0'; s++)
+        hashval = *s + 31 * hashval;
+    return hashval % HASHSIZE;
+}
+
+/* lookup: 在hashtab中查找s */
+struct nlist *lookup(char *s) {
+    struct nlist *np;
+    
+    for (np = hashtab[hash(s)]; np != NULL; np = np->next)
+        if (strcmp(s, np->name) == 0)
+            return np;
+    return NULL;
+}
+
+/* install: 将（name, defn）加入到hashtab中 */
+struct nlist *install(char *name, char *defn) {
+    struct nlist *np;
+    unsigned hashval;
+
+    if((np = lookup(name)) == NULL) { /* 未找到 */
+        np = (struct nlist *) malloc(sizeof(*np));
+        if(np == NULL || (np->name = strdup_(name)) == NULL)
+            return NULL;
+        hashval = hash(name);
+        np->next = hashtab[hashval];
+        hashtab[hashval] = np;
+    }
+    else /* 已存在 */
+        free((void *) np->defn); /* 释放前一个defn */
+    if((np->defn) = strdup_(defn) == NULL)
+        return NULL;
+    return np;
+}
+
+/* undef: 从hashtab中删除name及其定义 */
+void undef(char *name) {
+    unsigned hashval = hash(name);
+    struct nlist *p = hashtab[hashval], *temp;
+
+    if (p == NULL)
+        return;
+    else if (strcmp(name, p->name) == 0) {
+        hashtab[hashval] = p->next;
+        free(p);
+    }
+    else
+        for(; p->next; p = p->next)
+            if (strcmp(name, p->next->name) == 0) {
+                temp = p->next;
+                p->next = temp->next;
+                free(temp);
+            }
+}
+
+/* getch: 取一个字符（可能是压回的字符） */
+int getch(void) {
+    return bufp > 0 ? buf[--bufp] : getchar();
+}
+
+/* ungetch: 把字符压回到输入中 */
+void ungetch(int c) {
+    if (bufp > BUFSIZE)
+        printf("ungetch: too many characters\n");
+    else
+        buf[bufp++] = c;
+}
