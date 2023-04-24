@@ -8,7 +8,8 @@
         "string_view": "c",
         "cstdlib": "c",
         "system_error": "c",
-        "fcntl.h": "c"
+        "fcntl.h": "c",
+        "stat.h": "c"
     },
     "makefile.launchConfigurations": [
         {
