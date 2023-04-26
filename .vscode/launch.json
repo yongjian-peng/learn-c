@@ -15,7 +15,7 @@
             "name": "(gdb) 启动",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
             // "args": ["-f","E:/project/learn-c/src/myprog.c","-o","E:/project/learn-c/src/myprog.txt"],
             "args": ["E:/project/learn-c/src/1-1.dSYM/"],
             "stopAtEntry": false,

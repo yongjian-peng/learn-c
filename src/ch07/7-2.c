@@ -10,6 +10,7 @@
  * 
  */
 #include <stdio.h>
+#include <ctype.h>
 
 #define MAXLINE 100
 int getline(char line[], int lim);

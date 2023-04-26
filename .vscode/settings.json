@@ -9,14 +9,8 @@
         "cstdlib": "c",
         "system_error": "c",
         "fcntl.h": "c",
-        "stat.h": "c"
+        "stat.h": "c",
+        "cctype": "c"
     },
-    "makefile.launchConfigurations": [
-        {
-            "cwd": "e:\\project\\learn-c\\output",
-            "binaryPath": "e:\\project\\learn-c\\output\\main.exe",
-            "binaryArgs": []
-        }
-    ],
     "C_Cpp.errorSquiggles": "disabled"
 }

@@ -1,0 +1,21 @@
+.PHONY:clean
+	#note:"PHONY" must be up case
+CC = gcc
+RM = rm
+EXE = all
+OBJS = main.o f1.o f2.o f3.o
+
+$(EXE): $(OBJS)
+	$(CC) -o $(EXE) $(OBJS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o
+f1.o: f1.c
+	$(CC) -c f1.c -o f1.o
+f2.o: f2.c
+	$(CC) -c f2.c -o f2.o
+f3.o: f3.c
+	$(CC) -c f3.c -o f3.o
+
+clean: 
+	$(RM) $(EXE) $(OBJS)
