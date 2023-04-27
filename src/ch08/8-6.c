@@ -1,5 +1,5 @@
 /**
- * @file 8-6.c 标准库 calloc(n, size)返回一个指针，它指向n个长度wei size 的对象，且所有分配的存储空间都被初始化为0，通过调用或修改malloc函数实现 calloc函数
+ * @file 8-6.c 标准库 calloc2(n, size)返回一个指针，它指向n个长度wei size 的对象，且所有分配的存储空间都被初始化为0，通过调用或修改malloc函数实现 calloc2函数
  * @author your name (you@domain.com)
  * @brief 
  * @version 0.1
@@ -14,6 +14,7 @@
  #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+// #include <stdlib.h>
 
 #define NALLOC 1024
 
@@ -32,15 +33,15 @@ typedef union header Header;
 static Header base;
 static Header *freep = NULL;
 
-void *calloc(unsigned n, unsigned size);
+void *calloc2(unsigned n, unsigned size);
 static Header *moreroce(unsigned nu);
-void free(void *ap);
+void free_2(void *ap);
 
 int main(void)
 {
 	int *p;
 	int i;
-	if((p = (int *) calloc(100, sizeof(int))) == NULL)
+	if((p = (int *) calloc2(100, sizeof(int))) == NULL)
 		return -1;
 
 	for(i = 0; i < 100; i++)
@@ -48,15 +49,15 @@ int main(void)
 
 	for(i = 0; i < 100; i++)
 	{
-		printf("%d", *(p + i));
+		printf("%d ", *(p + i));
 		if(i % 10 == 9)
 			putchar('\n');
 	}
-	free(p);
+	free_2(p);
 	return 0;
 }
 
-void *calloc(unsigned n, unsigned size)
+void *calloc2(unsigned n, unsigned size)
 {
 	Header *p, *prevp;
 	Header *moreroce(unsigned);
@@ -109,11 +110,11 @@ static Header *moreroce(unsigned nu)
 	up = (Header *) cp;
 	up -> s.size = nu;
 	
-	free((void *) (up +1));
+	free_2((void *) (up +1));
 	return freep;
 }
 
-void free(void *ap)
+void free_2(void *ap)
 {
 	Header *bp, *p;
 	bp = (Header *) ap - 1;

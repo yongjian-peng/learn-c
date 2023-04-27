@@ -4,14 +4,11 @@ CC = gcc
 RM = rm
 EXE = all
 
-OBJS = 7-1.o
+OBJS = 8-1.out
 
 CFLAGS = "-std=c99"
 $(EXE): $(OBJS)
 	$(CC) -o $(EXE) $(OBJS)
-
-#7-1.o: 7-1.c
-#	$(CC) $(CFLAGS) -c $< -o $@
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

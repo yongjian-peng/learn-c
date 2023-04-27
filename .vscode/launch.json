@@ -3,10 +3,10 @@
     "configurations": [
         {
             "name": "C/C++: Launch",
-            "type": "cppvsdbg",
+            "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
-            "args": ["2","3","4","+","*"],
+            "program": "${fileDirname}/${fileBasenameNoExtension}.out",
+            "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": []
@@ -15,9 +15,9 @@
             "name": "(gdb) 启动",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "program": "${fileDirname}/${fileBasenameNoExtension}.out",
             // "args": ["-f","E:/project/learn-c/src/myprog.c","-o","E:/project/learn-c/src/myprog.txt"],
-            "args": ["E:/project/learn-c/src/1-1.dSYM/"],
+            "args": [""],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
@@ -35,7 +35,13 @@
                     "text": "-gdb-set disassembly-flavor intel",
                     "ignoreFailures": true
                 }
-            ]
+            ],
+            "logging": {
+                "engineLogging": true,
+                "traceResponse": true,
+                "externalConsole": true
+            },
+            
         }
     ]
 }
