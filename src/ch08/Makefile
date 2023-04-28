@@ -11,9 +11,9 @@ $(EXE): $(OBJS)
 	$(CC) -o $(EXE) $(OBJS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -g -c $< -o $@
 %.out: %.o
-	$(CC) -o $@ $<
+	$(CC) -g -o $@ $<
 
 clean:
 	$(RM) *.o *.out
