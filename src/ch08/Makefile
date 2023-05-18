@@ -12,6 +12,8 @@ $(EXE): $(OBJS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -g -c $< -o $@
+%.o: %.cpp
+	$(CC) $(CFLAGS) -g -c $< -o $@
 %.out: %.o
 	$(CC) -g -o $@ $<
 
